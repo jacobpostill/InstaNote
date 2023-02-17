@@ -1,6 +1,6 @@
 const expressRouter = require('express').Router();
-const { save, read } = require('../js/script');
-const uuid = require('../js/uuid');
+const { save, read } = require('../database/script');
+const uuid = require('../database/uuid');
 const express = require('express');
 
 expressRouter.get('/', (req, res) => {
