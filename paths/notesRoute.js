@@ -28,7 +28,7 @@ expressRouter.post('/', (req, res) => {
         })})});
 
 expressRouter.delete('/:noteId', (req, res) => {
-  const deleteId = req.params.id;
+  const deleteId = req.params.noteId;
   if (deleteId != "" && deleteId != undefined)
   {
     read("../db", "db.json").then ((data) => {
