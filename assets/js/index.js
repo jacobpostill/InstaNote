@@ -5,6 +5,8 @@ let newNoteBtn;
 let noteList;
 
 if (window.location.pathname === '/notes') {
+  newNote = document.querySelector('.new-note');
+  tips = document.querySelector('.tips');
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -50,6 +52,10 @@ const deleteNote = (id) =>
     },
   });
 
+const reveal = (elem) => {
+  elem.style.display = 'block'
+}
+
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -58,11 +64,13 @@ const renderActiveNote = () => {
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
+    hide(tips)
   } else {
     noteTitle.removeAttribute('readonly');
     noteText.removeAttribute('readonly');
     noteTitle.value = '';
     noteText.value = '';
+    reveal (noteTips)
   }
 };
 
@@ -84,6 +92,7 @@ const handleNoteDelete = (e) => {
 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -111,7 +120,9 @@ const handleNewNoteView = (e) => {
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
+    hide(newNote)
   } else {
+    show(newNote)
     show(saveNoteBtn);
   }
 };
@@ -175,9 +186,12 @@ const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
+  newNote.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
+  if (!activeNote.id) 
+  noteTitle.focus ();
 }
 
 getAndRenderNotes();

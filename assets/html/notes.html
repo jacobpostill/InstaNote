@@ -12,14 +12,14 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
 
   <body>
     <nav class="navbar bg-info">
       <a class="navbar-brand text-light p-3" href="/">Note Taker </a>
       <div class="icons">
-        <i class="fas fa-save text-light save-note"></i>
+        <i class="fas fa-save text-light save-note btn-1-color"></i>
         <i class="fas fa-plus text-light new-note"></i>
       </div>
     </nav>
@@ -29,6 +29,8 @@
           <div class="card">
             <ul class="list-group"></ul>
           </div>
+
+        
         </div>
         <div class="col-8">
           <input
@@ -38,9 +40,11 @@
             type="text"
           />
           <textarea class="note-textarea" placeholder="Note Text"></textarea>
+          <div class="tips">Save Tip<input class="new-note" type="button" value="New Note"></div>
+
         </div>
       </div>
     </div>
-    <script src="/assets/js/index.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
