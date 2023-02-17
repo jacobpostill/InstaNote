@@ -6,7 +6,6 @@ let noteList;
 
 if (window.location.pathname === '/notes') {
   newNote = document.querySelector('.new-note');
-  tips = document.querySelector('.tips');
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -64,13 +63,11 @@ const renderActiveNote = () => {
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
-    hide(tips)
   } else {
     noteTitle.removeAttribute('readonly');
     noteText.removeAttribute('readonly');
     noteTitle.value = '';
     noteText.value = '';
-    reveal (tips)
   }
 };
 
