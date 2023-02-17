@@ -70,7 +70,7 @@ const renderActiveNote = () => {
     noteText.removeAttribute('readonly');
     noteTitle.value = '';
     noteText.value = '';
-    reveal (noteTips)
+    reveal (tips)
   }
 };
 
